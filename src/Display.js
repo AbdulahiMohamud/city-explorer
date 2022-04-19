@@ -3,7 +3,7 @@ import './Display.css';
 
 class Display extends React.Component {
   render () {
-    console.log(this.props.cityData);
+
     return (
       <>
   

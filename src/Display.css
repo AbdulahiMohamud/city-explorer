@@ -1,0 +1,14 @@
+img{
+  border: 5px solid rgb(197, 1, 174);
+}
+ul{
+  border-top: 3px solid black; 
+  color: rgb(13, 29, 23);
+  font-size: 1.2em;
+  list-style-type:none;
+  padding: 0;
+  margin:auto;
+}
+li{
+  border: ;
+}

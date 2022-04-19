@@ -3,7 +3,8 @@
 **Author**:Abdulahi Mohamud
 **Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
 
-https://files.slack.com/files-pri/T039KG69K-F03BX5AGRCJ/screen_shot_2022-04-18_at_12.54.38_pm.png#![image](https://user-images.githubusercontent.com/80485424/164050371-fb954884-7ba7-4a62-b20c-7926db019af5.png)
+
+<img width="742" alt="wwrcc-04-18_at_12 54 38_pm" src="https://user-images.githubusercontent.com/80485424/164085536-ec29d396-aa10-4374-b643-19bcb16bcb29.png">
 
 
 ## Overview

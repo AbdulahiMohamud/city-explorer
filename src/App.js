@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import Forms from './Forms';
 import Display from './Display';
+import Weather from './Weather';
 import './App.css'
 
 class App extends React.Component {
@@ -25,14 +26,12 @@ class App extends React.Component {
 
       let cityDataMap = `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATIONIQ_API_KEY}&center=${data.data[0].lat},${data.data[0].lon}&zoom=14`
 
-      let cityForeCast = await axios.get(`${process.env.REACT_APP_SERVER}weather?searchQueryCity=${this.state.city}`);
+      let cityForeCast = await axios.get(`${process.env.REACT_APP_SERVER}/weather?searchQueryCity=${this.state.city}`);
 
       let forcast = cityForeCast.data;
 
 
-
-
-      // console.log(cityData.data[0].lon);
+      console.log(forcast);
       this.setState ({
         cityData: data.data[0],
         flag:true,
@@ -79,7 +78,12 @@ class App extends React.Component {
           cityData={this.state.cityData}
           /> 
         ): null}
-         
+
+
+        <Weather
+        weatherData={this.state.weatherData}
+        city={this.state.city}
+        />       
 
       
     </>

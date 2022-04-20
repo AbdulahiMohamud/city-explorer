@@ -10,13 +10,10 @@ class App extends React.Component {
     this.state = {
       city:'',
       flag:false,
-      // lat:'',
-      // lon:'',
-      // img: '',
-      // display: '',
       cityData: 0,
       error:false,
-      errorMessage:''
+      errorMessage:'',
+      weatherData:[]
 
     }
   }
@@ -28,17 +25,24 @@ class App extends React.Component {
 
       let cityDataMap = `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATIONIQ_API_KEY}&center=${data.data[0].lat},${data.data[0].lon}&zoom=14`
 
+      let cityForeCast = await axios.get(`${process.env.REACT_APP_SERVER}weather?searchQueryCity=${this.state.city}`);
+
+      let forcast = cityForeCast.data;
+
+
+
 
       // console.log(cityData.data[0].lon);
       this.setState ({
         cityData: data.data[0],
         flag:true,
-        // lat:cityData.data[0].lat,
-        // lon:cityData.data[0].lon,
-        // display:cityData.data[0].display_name,
-        img: cityDataMap
+        img: cityDataMap,
+        weatherData: forcast
       })
+
+
     } catch (error) {
+
       this.setState({
         error:true,
         errorMessage:`An Error Occurred: ${error.response.status}`
@@ -56,6 +60,7 @@ class App extends React.Component {
   }
 
   render() {
+    console.log(this.state.weatherData);
    
     return (
       <>

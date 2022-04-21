@@ -3,6 +3,7 @@ import axios from 'axios';
 import Forms from './Forms';
 import Display from './Display';
 import Weather from './Weather';
+import Movies from './Movies';
 import './App.css'
 
 class App extends React.Component {
@@ -14,7 +15,8 @@ class App extends React.Component {
       cityData: 0,
       error:false,
       errorMessage:'',
-      weatherData:[]
+      weatherData:[],
+      movieArray:[]
 
     }
   }
@@ -27,16 +29,20 @@ class App extends React.Component {
       let cityDataMap = `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATIONIQ_API_KEY}&center=${data.data[0].lat},${data.data[0].lon}&zoom=14`
 
       let cityForeCast = await axios.get(`${process.env.REACT_APP_SERVER}/weather?searchQueryCity=${this.state.city}`);
-
       let forcast = cityForeCast.data;
+      
+      let url = `${process.env.REACT_APP_SERVER}/movies?movieQueryCity=${this.state.city}`
+      let cityMovie = await axios.get(url);
+      let movieData = cityMovie.data
 
 
-      console.log(forcast);
+
       this.setState ({
         cityData: data.data[0],
         flag:true,
         img: cityDataMap,
-        weatherData: forcast
+        weatherData: forcast,
+        movieArray: movieData
       })
 
 
@@ -59,7 +65,6 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(this.state.weatherData);
    
     return (
       <>
@@ -83,7 +88,11 @@ class App extends React.Component {
         <Weather
         weatherData={this.state.weatherData}
         city={this.state.city}
-        />       
+        /> 
+
+        <Movies
+        movie={this.state.movieArray}
+        />     
 
       
     </>

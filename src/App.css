@@ -1,7 +1,19 @@
 body{
-  background-color: cornflowerblue
+  background-color: cornflowerblue;
+
 }
 Form{
-  color: blue;
+  color: white;
+  font-size: 2em;
+  display:flex ;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-left: 35%;
  
 }
+main {
+  display:flex ;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+

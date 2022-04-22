@@ -1,5 +1,5 @@
 img{
-  border: 5px solid rgb(197, 1, 174);
+  border: 5px solid rgb(23, 160, 210);
 }
 ul{
   border-top: 3px solid black; 
@@ -10,5 +10,6 @@ ul{
   margin:auto;
 }
 li{
-  border: ;
+  font-size: 1.2em;
+  color: rgb(204, 197, 10)
 }

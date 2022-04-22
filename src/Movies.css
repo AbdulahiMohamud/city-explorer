@@ -1,0 +1,14 @@
+#Movie{
+  width:  14vw;
+  height: 14vw;
+}
+
+.cards{
+width: 20vw;
+border: blue solid 5px;
+border-radius: 20px 20px;
+margin: .9vw;
+padding: 1vw;
+background: linear-gradient(white, rgb(26, 104, 229));
+
+}

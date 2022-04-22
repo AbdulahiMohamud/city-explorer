@@ -4,6 +4,7 @@ import Forms from './Forms';
 import Display from './Display';
 import Weather from './Weather';
 import Movies from './Movies';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
 
 class App extends React.Component {
@@ -24,25 +25,17 @@ class App extends React.Component {
   handleCitySubmit = async(e) => {
     e.preventDefault();
     try {
-      let data =  await axios.get(`https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATIONIQ_API_KEY}&q=${this.state.city}&format=json`);
 
-      let cityDataMap = `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATIONIQ_API_KEY}&center=${data.data[0].lat},${data.data[0].lon}&zoom=14`
-
-      let cityForeCast = await axios.get(`${process.env.REACT_APP_SERVER}/weather?searchQueryCity=${this.state.city}`);
-      let forcast = cityForeCast.data;
+      this.handleLocation();
       
-      let url = `${process.env.REACT_APP_SERVER}/movies?movieQueryCity=${this.state.city}`
-      let cityMovie = await axios.get(url);
-      let movieData = cityMovie.data
+      this.handleWeather();
 
-
+      this.handleMovies();
+      
 
       this.setState ({
-        cityData: data.data[0],
         flag:true,
-        img: cityDataMap,
-        weatherData: forcast,
-        movieArray: movieData
+
       })
 
 
@@ -58,6 +51,47 @@ class App extends React.Component {
 
     
   }
+  handleMovies = async(e) => {
+    let url = `${process.env.REACT_APP_SERVER}/movies?movieQueryCity=${this.state.city}`
+    let cityMovie = await axios.get(url);
+    let movieData = cityMovie.data
+    
+    this.setState ({
+      movieArray: movieData
+
+    })
+
+  }
+  handleWeather = async(e) => {
+
+    let cityForeCast = await axios.get(`${process.env.REACT_APP_SERVER}/weather?searchQueryCity=${this.state.city}`);
+    let forcast = cityForeCast.data;
+
+
+    this.setState ({
+      weatherData: forcast
+      
+    })
+
+
+  }
+  handleLocation = async(e) => {
+
+    let data =  await axios.get(`https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATIONIQ_API_KEY}&q=${this.state.city}&format=json`);
+
+    let cityDataMap = `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATIONIQ_API_KEY}&center=${data.data[0].lat},${data.data[0].lon}&zoom=11`
+
+    this.setState ({
+      cityData: data.data[0],
+      img: cityDataMap
+      
+    })
+
+
+  }
+
+
+
   handleCityInput = (e) => {
     this.setState({
       city: e.target.value
@@ -90,9 +124,11 @@ class App extends React.Component {
         city={this.state.city}
         /> 
 
+        <main>
         <Movies
         movie={this.state.movieArray}
         />     
+        </main>
 
       
     </>

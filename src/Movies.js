@@ -5,6 +5,7 @@ import './Movies.css';
 
 class Movies extends React.Component {
   render() {
+    console.log(this.props.movie);
     return(
       <>
       {

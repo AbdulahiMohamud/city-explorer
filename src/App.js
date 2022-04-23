@@ -17,7 +17,8 @@ class App extends React.Component {
       error:false,
       errorMessage:'',
       weatherData:[],
-      movieArray:[]
+      movieArray:[],
+      weatherFlag: false
 
     }
   }
@@ -56,6 +57,7 @@ class App extends React.Component {
     let cityMovie = await axios.get(url);
     let movieData = cityMovie.data
     
+    
     this.setState ({
       movieArray: movieData
 
@@ -68,8 +70,10 @@ class App extends React.Component {
     let forcast = cityForeCast.data;
 
 
+
     this.setState ({
-      weatherData: forcast
+      weatherData: forcast,
+      weatherFlag:true
       
     })
 
@@ -98,8 +102,7 @@ class App extends React.Component {
     })
   }
 
-  render() {
-   
+  render() {  
     return (
       <>
       <Forms
@@ -118,11 +121,13 @@ class App extends React.Component {
           /> 
         ): null}
 
+        {this.state.weatherFlag ? (
 
         <Weather
         weatherData={this.state.weatherData}
         city={this.state.city}
         /> 
+        ): null}
 
         <main>
         <Movies

@@ -12,6 +12,8 @@
 
 ![wrrc3](https://user-images.githubusercontent.com/80485424/164583560-5e3adb9e-adac-49fd-bd8a-dcb0286356a3.jpg)
 
+![cache wrrcw (1)](https://user-images.githubusercontent.com/80485424/164872615-47383b09-5119-4c8c-863a-064e92ce4364.jpg)
+
 ## Overview
 <!-- Provide a high level overview of what this application is and why you are building it, beyond the fact that it's an assignment for this class. (i.e. What's your problem domain?) -->
 Today you will be building a React application that uses the Axios library to make user-initiated requests for data from a third-party API.
@@ -78,8 +80,6 @@ Start time:500
 Finish time:536
 
 Actual time needed to complete:36min
-
-
 
 
 Name of feature:Refactor: Componentize the front-end codebase.
